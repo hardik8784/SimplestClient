@@ -38,7 +38,7 @@ public class LazyProfessorClient : MonoBehaviour
             SendMessageToHost(ClientToServerTransferSignifiers.RequestAccountInformation + "");
 
         else if (Input.GetKeyDown(KeyCode.D))
-            SendMessageToHost(ClientToServerTransferSignifiers.SubmitNetworkedClientGitRepoLink + ",https://github.com/hardik8784/SimplestClient.git");
+            SendMessageToHost(ClientToServerTransferSignifiers.SubmitAssignmentTwoLink + ",https://drive.google.com/drive/folders/1MQocna4anq1E0Odf-pSFiVOUQnkhMs8Q?usp=sharing");
 
         UpdateNetworkConnection();
     }

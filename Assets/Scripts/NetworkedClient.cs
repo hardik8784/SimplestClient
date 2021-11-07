@@ -136,7 +136,7 @@ public class NetworkedClient : MonoBehaviour
         }
         else if (Signifier == ServerToClientSignifiers.OpponentTicTacToePlay)
         {
-            Debug.Log("OpponentTicTacToePlay");
+            Debug.Log("OpponentTicTacToePlay Requested");
         }
     }
 

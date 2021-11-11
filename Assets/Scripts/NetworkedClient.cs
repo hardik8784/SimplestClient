@@ -17,7 +17,7 @@ public class NetworkedClient : MonoBehaviour
     bool isConnected = false;
     int ourClientID;
 
-    GameObject GameManager;
+    GameObject GameSystemManager;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +25,8 @@ public class NetworkedClient : MonoBehaviour
         GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
         foreach (GameObject go in allObjects)
         {
-            if (go.name == "GameManager")
-                GameManager = go;
+            if (go.name == "GameSystemManager")
+                GameSystemManager = go;
         }
 
             Connect();
@@ -127,12 +127,13 @@ public class NetworkedClient : MonoBehaviour
             if(LoginResultSignifier == LoginResponses.Success)
             {
                 Debug.Log("Entered into the loop");
-                GameManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.MainMenu);
+                GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.MainMenu);
             }
         }
         else if (Signifier == ServerToClientSignifiers.GameSessionStarted)
         {
-            GameManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.PlayingTicTacToe);
+            GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.PlayingTicTacToe);
+            Debug.Log("Next Item,Playing tic tac toe!!!");
         }
         else if (Signifier == ServerToClientSignifiers.OpponentTicTacToePlay)
         {

@@ -38,7 +38,7 @@ public class LazyProfessorClient : MonoBehaviour
             SendMessageToHost(ClientToServerTransferSignifiers.RequestAccountInformation + "");
 
         else if (Input.GetKeyDown(KeyCode.D))
-            SendMessageToHost(ClientToServerTransferSignifiers.SubmitAssignmentTwoLink + ",https://drive.google.com/drive/folders/1MQocna4anq1E0Odf-pSFiVOUQnkhMs8Q?usp=sharing");
+            SendMessageToHost(ClientToServerTransferSignifiers.SubmitAssignmentOneLink + ",https://drive.google.com/file/d/1grh1voeuCIRZeDixlREYL9l450PHV4-b/view?usp=sharing");
 
         UpdateNetworkConnection();
     }

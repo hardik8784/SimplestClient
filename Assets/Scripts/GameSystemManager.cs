@@ -57,19 +57,19 @@ public class GameSystemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.A))
+        //if (Input.GetKeyDown(KeyCode.A))
         //{
         //    ChangeGameState(GameStates.Login);
         //}
-        //if(Input.GetKeyDown(KeyCode.S))
+        //if (Input.GetKeyDown(KeyCode.S))
         //{
         //    ChangeGameState(GameStates.MainMenu);
         //}
-        //if(Input.GetKeyDown(KeyCode.D))
+        //if (Input.GetKeyDown(KeyCode.D))
         //{
         //    ChangeGameState(GameStates.WaitingForMatch);
         //}
-        //if(Input.GetKeyDown(KeyCode.F))
+        //if (Input.GetKeyDown(KeyCode.F))
         //{
         //    ChangeGameState(GameStates.PlayingTicTacToe);
         //}
@@ -155,11 +155,11 @@ public class GameSystemManager : MonoBehaviour
         }
         else if (newState == GameStates.WaitingForMatch)
         {
-            PlaceHolderGameButton.SetActive(true);
+            //PlaceHolderGameButton.SetActive(true);
         }
         else if (newState == GameStates.PlayingTicTacToe)
         {
-            //PlaceHolderGameButton.SetActive(true);
+            PlaceHolderGameButton.SetActive(true);
         }
     }
 }

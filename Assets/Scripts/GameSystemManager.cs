@@ -102,6 +102,8 @@ public class GameSystemManager : MonoBehaviour
         NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.AddToGameSessionQueue + "");
 
         ChangeGameState(GameStates.WaitingForMatch);
+
+        Debug.Log("Changing the state Witing For Match");
     }
 
     private void PlaceHolderGameButtonPressed()
@@ -138,6 +140,7 @@ public class GameSystemManager : MonoBehaviour
         PlaceHolderGameButton.SetActive(false);
         InfoText.SetActive(false);
         InfoText2.SetActive(false);
+      //  NetworkedClient.SetActive(false);
 
         if (newState == GameStates.Login)
         {
@@ -159,6 +162,7 @@ public class GameSystemManager : MonoBehaviour
         }
         else if (newState == GameStates.PlayingTicTacToe)
         {
+            Debug.Log("PlaceHolderButton SetActive to True");
             PlaceHolderGameButton.SetActive(true);
         }
     }

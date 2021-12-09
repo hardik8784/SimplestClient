@@ -14,6 +14,8 @@ public class GameSystemManager : MonoBehaviour
 
     GameObject InfoText, InfoText2;
 
+    GameObject GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +43,26 @@ public class GameSystemManager : MonoBehaviour
                 InfoText = go;
             else if (go.name == "InfoText2")
                 InfoText2 = go;
+            else if (go.name == "GridSpace_00")
+                GridSpace_00 = go;
+            else if (go.name == "GridSpace_01")
+                GridSpace_01 = go;
+            else if (go.name == "GridSpace_02")
+                GridSpace_02 = go;
+            else if (go.name == "GridSpace_10")
+                GridSpace_10 = go;
+            else if (go.name == "GridSpace_11")
+                GridSpace_11 = go;
+            else if (go.name == "GridSpace_12")
+                GridSpace_12 = go;
+            else if (go.name == "GridSpace_21")
+                GridSpace_21 = go;
+            else if (go.name == "GridSpace_22")
+                GridSpace_22 = go;
+            else if (go.name == "GridSpace_23")
+                GridSpace_23 = go;
         }
+
 
         SubmitButton.GetComponent<Button>().onClick.AddListener(SubmitButtonPressed);
         ToggleCreate.GetComponent<Toggle>().onValueChanged.AddListener(ToggleCreateValueChanged);
@@ -50,9 +71,25 @@ public class GameSystemManager : MonoBehaviour
         FindGameSessionButton.GetComponent<Button>().onClick.AddListener(FindGameSessionButtonPressed);
         PlaceHolderGameButton.GetComponent<Button>().onClick.AddListener(PlaceHolderGameButtonPressed);
 
+        //GridSpace_00.GetComponent<Button>().onClick.AddListener(GridSpace_00_Cliked);
+        //GridSpace_01.GetComponent<Button>().onClick.AddListener(GridSpace_01_Cliked);
+        //GridSpace_02.GetComponent<Button>().onClick.AddListener(GridSpace_02_Cliked);
+        //GridSpace_10.GetComponent<Button>().onClick.AddListener(GridSpace_10_Cliked);
+        //GridSpace_11.GetComponent<Button>().onClick.AddListener(GridSpace_11_Cliked);
+        //GridSpace_12.GetComponent<Button>().onClick.AddListener(GridSpace_12_Cliked);
+        //GridSpace_21.GetComponent<Button>().onClick.AddListener(GridSpace_21_Cliked);
+        //GridSpace_22.GetComponent<Button>().onClick.AddListener(GridSpace_22_Cliked);
+        //GridSpace_23.GetComponent<Button>().onClick.AddListener(GridSpace_23_Cliked);
+
+
         ChangeGameState(GameStates.Login);
 
     }
+
+    //public void GamePlay(int Button, int Player)
+    //{
+
+    //}
 
     // Update is called once per frame
     void Update()

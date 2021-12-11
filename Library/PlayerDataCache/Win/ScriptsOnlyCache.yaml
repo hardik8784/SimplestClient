@@ -62,31 +62,31 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1512}
+      Script: {instanceID: 1462}
     - Class: 114
-      Script: {instanceID: 1622}
+      Script: {instanceID: 1514}
     - Class: 114
-      Script: {instanceID: 1780}
+      Script: {instanceID: 1624}
     - Class: 114
-      Script: {instanceID: 1886}
+      Script: {instanceID: 1782}
     - Class: 114
-      Script: {instanceID: 2086}
+      Script: {instanceID: 1888}
     - Class: 114
-      Script: {instanceID: 2094}
+      Script: {instanceID: 2088}
     - Class: 114
-      Script: {instanceID: 2456}
+      Script: {instanceID: 2096}
     - Class: 114
-      Script: {instanceID: 2602}
+      Script: {instanceID: 2458}
     - Class: 114
-      Script: {instanceID: 2642}
+      Script: {instanceID: 2604}
     - Class: 114
-      Script: {instanceID: 2770}
+      Script: {instanceID: 2644}
     - Class: 114
-      Script: {instanceID: 2820}
+      Script: {instanceID: 2772}
     - Class: 114
-      Script: {instanceID: 2974}
+      Script: {instanceID: 2822}
     - Class: 114
-      Script: {instanceID: 3074}
+      Script: {instanceID: 2976}
     - Class: 114
       Script: {instanceID: 3334}
     - Class: 114
@@ -112,6 +112,12 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: 69415240821be7986b27e72bf9609a30
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -364,12 +370,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ToggleGroup
-  - hash:
-      serializedVersion: 2
-      Hash: 69415240821be7986b27e72bf9609a30
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
   - hash:
       serializedVersion: 2
       Hash: 349d08daa6108b9a28f8c38fd40ce96f

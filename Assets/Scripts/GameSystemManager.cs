@@ -140,14 +140,12 @@ public class GameSystemManager : MonoBehaviour
 
         ChangeGameState(GameStates.WaitingForMatch);
 
-        Debug.Log("Changing the state Witing For Match");
+        Debug.Log("Changing the state Waiting For Match");
     }
 
     private void PlaceHolderGameButtonPressed()
     {
         NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.TicTacToePlay + "");
-
-
     }
 
     private void ToggleCreateValueChanged(bool newValue)

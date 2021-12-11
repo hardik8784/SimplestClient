@@ -16,6 +16,14 @@ public class GameSystemManager : MonoBehaviour
 
     GameObject GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
 
+    GameObject TicTacToeBoard;
+
+    public int WhoisthePlayer = 0;
+
+    bool ChangeXor0 = false;
+
+    [SerializeField] public int playerID;
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +69,8 @@ public class GameSystemManager : MonoBehaviour
                 GridSpace_22 = go;
             else if (go.name == "GridSpace_23")
                 GridSpace_23 = go;
+            else if (go.name == "TicTacToeBoard")
+                TicTacToeBoard = go;
         }
 
 
@@ -71,15 +81,15 @@ public class GameSystemManager : MonoBehaviour
         FindGameSessionButton.GetComponent<Button>().onClick.AddListener(FindGameSessionButtonPressed);
         PlaceHolderGameButton.GetComponent<Button>().onClick.AddListener(PlaceHolderGameButtonPressed);
 
-        //GridSpace_00.GetComponent<Button>().onClick.AddListener(GridSpace_00_Cliked);
-        //GridSpace_01.GetComponent<Button>().onClick.AddListener(GridSpace_01_Cliked);
-        //GridSpace_02.GetComponent<Button>().onClick.AddListener(GridSpace_02_Cliked);
-        //GridSpace_10.GetComponent<Button>().onClick.AddListener(GridSpace_10_Cliked);
-        //GridSpace_11.GetComponent<Button>().onClick.AddListener(GridSpace_11_Cliked);
-        //GridSpace_12.GetComponent<Button>().onClick.AddListener(GridSpace_12_Cliked);
-        //GridSpace_21.GetComponent<Button>().onClick.AddListener(GridSpace_21_Cliked);
-        //GridSpace_22.GetComponent<Button>().onClick.AddListener(GridSpace_22_Cliked);
-        //GridSpace_23.GetComponent<Button>().onClick.AddListener(GridSpace_23_Cliked);
+        GridSpace_00.GetComponent<Button>().onClick.AddListener(GridSpace_00_Cliked);
+        GridSpace_01.GetComponent<Button>().onClick.AddListener(GridSpace_01_Cliked);
+        GridSpace_02.GetComponent<Button>().onClick.AddListener(GridSpace_02_Cliked);
+        GridSpace_10.GetComponent<Button>().onClick.AddListener(GridSpace_10_Cliked);
+        GridSpace_11.GetComponent<Button>().onClick.AddListener(GridSpace_11_Cliked);
+        GridSpace_12.GetComponent<Button>().onClick.AddListener(GridSpace_12_Cliked);
+        GridSpace_21.GetComponent<Button>().onClick.AddListener(GridSpace_21_Cliked);
+        GridSpace_22.GetComponent<Button>().onClick.AddListener(GridSpace_22_Cliked);
+        GridSpace_23.GetComponent<Button>().onClick.AddListener(GridSpace_23_Cliked);
 
 
         ChangeGameState(GameStates.Login);
@@ -108,8 +118,171 @@ public class GameSystemManager : MonoBehaviour
         //}
         //if (Input.GetKeyDown(KeyCode.F))
         //{
-        //    ChangeGameState(GameStates.PlayingTicTacToe);
+        //    ChangeGameState(GameStates.TicTacToeStarted);
         //}
+    }
+
+    private void GridSpace_00_Cliked()
+    {
+         NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.OpponentTurn + " ");
+         //GamePlay(00, playerID);
+         // Debug.Log("PlayerID : " + playerID);
+         //  Debug.Log("WhoisthePlayer:" + WhoisthePlayer);
+    }
+
+    private void GridSpace_01_Cliked()
+    {
+       // GamePlay(01, WhoisthePlayer);
+    }
+
+    private void GridSpace_02_Cliked()
+    {
+       // GamePlay(02, WhoisthePlayer);
+    }
+    private void GridSpace_10_Cliked()
+    {
+      //  GamePlay(10, WhoisthePlayer);
+    }
+    private void GridSpace_11_Cliked()
+    {
+      //  GamePlay(11, WhoisthePlayer);
+    }
+    private void GridSpace_12_Cliked()
+    {
+       // GamePlay(12, WhoisthePlayer);
+    }
+    private void GridSpace_21_Cliked()
+    {
+      //  GamePlay(21, WhoisthePlayer);
+    }
+    private void GridSpace_22_Cliked()
+    {
+       // GamePlay(22, WhoisthePlayer);
+    }
+    private void GridSpace_23_Cliked()
+    {
+        //GamePlay(23, WhoisthePlayer);
+    }
+   
+    public void GamePlay(int WhichButtonClicked, int Player)
+    {
+        string Xor0 = "";
+        int NonEmptySpots = 0;
+
+        switch (WhichButtonClicked)
+        {
+            // GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
+            case 00:
+                Xor0 = Player_Choice(Player, GridSpace_00.GetComponentInChildren<Text>().text);
+                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+                NonEmptySpots = 1;
+                break;
+            case 01:
+                Xor0 = Player_Choice(Player, GridSpace_01.GetComponentInChildren<Text>().text);
+                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+                NonEmptySpots = 2;
+                break;
+            case 02:
+                Xor0 = Player_Choice(Player, GridSpace_02.GetComponentInChildren<Text>().text);
+                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+                NonEmptySpots = 3;
+                break;
+            case 10:
+                Xor0 = Player_Choice(Player, GridSpace_10.GetComponentInChildren<Text>().text);
+                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+                NonEmptySpots = 4;
+                break;
+            case 11:
+                Xor0 = Player_Choice(Player, GridSpace_11.GetComponentInChildren<Text>().text);
+                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+                NonEmptySpots = 5;
+                break;
+            case 12:
+                Xor0 = Player_Choice(Player, GridSpace_12.GetComponentInChildren<Text>().text);
+                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+                NonEmptySpots = 6;
+                break;
+            case 21:
+                Xor0 = Player_Choice(Player, GridSpace_21.GetComponentInChildren<Text>().text);
+                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+                NonEmptySpots = 7;
+                break;
+            case 22:
+                Xor0 = Player_Choice(Player, GridSpace_22.GetComponentInChildren<Text>().text);
+                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+                NonEmptySpots = 8;
+                break;
+            case 23:
+                Xor0 = Player_Choice(Player, GridSpace_23.GetComponentInChildren<Text>().text);
+                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+                NonEmptySpots = 9;
+                break;
+            default:
+                break;
+        }
+
+        if (ChangeXor0)
+        {
+            NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.OpponentTurn + "");
+            Debug.Log(ClientToServerSignifiers.OpponentTurn + "OpponentTurn");
+        }
+
+    }
+
+    public void SetXor0(int GridSpace_Number, string Xor0)
+    {
+        switch (GridSpace_Number)
+        {
+            // GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
+            case 00:
+                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+                break;
+            case 01:
+                GridSpace_01.GetComponentInChildren<Text>().text = Xor0;
+                break;
+            case 02:
+                GridSpace_02.GetComponentInChildren<Text>().text = Xor0;
+                break;
+            case 10:
+                GridSpace_10.GetComponentInChildren<Text>().text = Xor0;
+                break;
+            case 11:
+                GridSpace_11.GetComponentInChildren<Text>().text = Xor0;
+                break;
+            case 12:
+                GridSpace_12.GetComponentInChildren<Text>().text = Xor0;
+                break;
+            case 21:
+                GridSpace_21.GetComponentInChildren<Text>().text = Xor0;
+                break;
+            case 22:
+                GridSpace_22.GetComponentInChildren<Text>().text = Xor0;
+                break;
+            case 23:
+                GridSpace_23.GetComponentInChildren<Text>().text = Xor0;
+                //GridSpace_23.transform.GetChild(0).GetComponent<Text>().text = Xor0;
+                break;
+        }
+    }
+
+    public string Player_Choice(int player, string PreviousValue)
+    {
+        string NewValue = "";
+        if (PreviousValue == "A")
+        {
+            ChangeXor0 = true;
+            if (player == 0)
+                NewValue = "X";
+            // WhoisthePlayer = PlayerID;
+            else
+                NewValue = "O";
+        }
+        else
+        {
+            NewValue = PreviousValue;
+            ChangeXor0 = false;
+        }
+        return NewValue;
     }
 
     private void SubmitButtonPressed()
@@ -166,6 +339,8 @@ public class GameSystemManager : MonoBehaviour
 
         //FindGameSessionButton, PlaceHolderGameButton;
 
+        //GameObject GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
+
         InputFieldUserName.SetActive(false);
         InputFieldPassword.SetActive(false);
         SubmitButton.SetActive(false);
@@ -175,6 +350,16 @@ public class GameSystemManager : MonoBehaviour
         PlaceHolderGameButton.SetActive(false);
         InfoText.SetActive(false);
         InfoText2.SetActive(false);
+        GridSpace_00.SetActive(false);
+        GridSpace_01.SetActive(false);
+        GridSpace_02.SetActive(false);
+        GridSpace_10.SetActive(false);
+        GridSpace_11.SetActive(false);
+        GridSpace_12.SetActive(false);
+        GridSpace_21.SetActive(false);
+        GridSpace_22.SetActive(false);
+        GridSpace_23.SetActive(false);
+        TicTacToeBoard.SetActive(false);
       //  NetworkedClient.SetActive(false);
 
         if (newState == GameStates.Login)
@@ -195,11 +380,23 @@ public class GameSystemManager : MonoBehaviour
         {
             //PlaceHolderGameButton.SetActive(true);
         }
-        else if (newState == GameStates.PlayingTicTacToe)
+        else if (newState == GameStates.TicTacToeStarted)
         {
-            Debug.Log("PlaceHolderButton SetActive to True");
-            PlaceHolderGameButton.SetActive(true);
+            Debug.Log("TicTacToe Board SetActive to True");
+
+            // PlaceHolderGameButton.SetActive(true);
+            TicTacToeBoard.SetActive(true);
+            GridSpace_00.SetActive(true);
+            GridSpace_01.SetActive(true);
+            GridSpace_02.SetActive(true);
+            GridSpace_10.SetActive(true);
+            GridSpace_11.SetActive(true);
+            GridSpace_12.SetActive(true);
+            GridSpace_21.SetActive(true);
+            GridSpace_22.SetActive(true);
+            GridSpace_23.SetActive(true);
         }
+       
     }
 }
 
@@ -212,5 +409,7 @@ public static class GameStates
 
     public const int WaitingForMatch = 3;
 
-    public const int PlayingTicTacToe = 4;
+    public const int TicTacToeStarted = 4;
+
+    //public const int StartTicTacToe = 5;
 }

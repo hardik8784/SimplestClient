@@ -132,12 +132,14 @@ public class NetworkedClient : MonoBehaviour
         }
         else if (Signifier == ServerToClientSignifiers.GameSessionStarted)
         {
-            GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.PlayingTicTacToe);
+            GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.TicTacToeStarted);
             Debug.Log("Next Item,Playing tic tac toe!!!");
         }
         else if (Signifier == ServerToClientSignifiers.OpponentTicTacToePlay)
         {
             Debug.Log("OpponentTicTacToePlay Requested");
+            Debug.Log("Player1 id : " +  int.Parse(csv[1]));
+            Debug.Log("Player2 id : " + int.Parse(csv[2]));
         }
     }
 
@@ -170,6 +172,8 @@ public static class ServerToClientSignifiers
     public const int GameSessionStarted = 2;
 
     public const int OpponentTicTacToePlay = 3;
+
+    public const int GameStarted = 4;
 
     //public const int LoginFailure = 2;
 

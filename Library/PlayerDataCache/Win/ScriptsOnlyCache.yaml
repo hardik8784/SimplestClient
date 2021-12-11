@@ -606,7 +606,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 00a68947a5e4cf3e84459d577223208b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameSystemManager
@@ -643,4 +643,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: H:/SimplestClient-main/SimplestClient/Builds/SimplestClient.exe
+  playerPath: H:/SimplestClient-main/SimplestClient/Builds/v0.3/SimplestClient.exe

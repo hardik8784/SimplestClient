@@ -19,6 +19,8 @@ public class NetworkedClient : MonoBehaviour
 
     GameObject GameSystemManager;
 
+    public int WhoisthePlayer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -128,6 +130,9 @@ public class NetworkedClient : MonoBehaviour
             {
                 Debug.Log("Entered into the loop");
                 GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.MainMenu);
+                WhoisthePlayer = id;
+                Debug.Log("Player ID : " + WhoisthePlayer);
+
             }
         }
         else if (Signifier == ServerToClientSignifiers.GameSessionStarted)

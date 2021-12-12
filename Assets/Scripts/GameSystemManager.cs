@@ -18,11 +18,11 @@ public class GameSystemManager : MonoBehaviour
 
     GameObject TicTacToeBoard;
 
-    public int WhoisthePlayer = 0;
+    //public int WhoisthePlayer = 0;
 
     bool ChangeXor0 = false;
 
-    [SerializeField] public int playerID;
+    //[SerializeField] public int playerID;
 
 
     // Start is called before the first frame update
@@ -96,10 +96,6 @@ public class GameSystemManager : MonoBehaviour
 
     }
 
-    //public void GamePlay(int Button, int Player)
-    //{
-
-    //}
 
     // Update is called once per frame
     void Update()
@@ -125,14 +121,17 @@ public class GameSystemManager : MonoBehaviour
     private void GridSpace_00_Cliked()
     {
          NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.OpponentTurn + " ");
-         //GamePlay(00, playerID);
-         // Debug.Log("PlayerID : " + playerID);
-         //  Debug.Log("WhoisthePlayer:" + WhoisthePlayer);
+        //GamePlay(00, playerID);
+       // GamePlay(00, NetworkedClient.GetComponent<NetworkedClient>().WhoisthePlayer);
+        // Debug.Log("PlayerID : " + playerID);
+        //  Debug.Log("WhoisthePlayer:" + WhoisthePlayer);
     }
 
     private void GridSpace_01_Cliked()
     {
-       // GamePlay(01, WhoisthePlayer);
+       
+        // GamePlay(01, WhoisthePlayer);
+        GamePlay(01, NetworkedClient.GetComponent<NetworkedClient>().WhoisthePlayer);
     }
 
     private void GridSpace_02_Cliked()
@@ -164,58 +163,58 @@ public class GameSystemManager : MonoBehaviour
         //GamePlay(23, WhoisthePlayer);
     }
    
-    public void GamePlay(int WhichButtonClicked, int Player)
+    public void GamePlay(int WhichButtonClicked, int player)
     {
         string Xor0 = "";
-        int NonEmptySpots = 0;
+        int FilledSlots = 0;
 
         switch (WhichButtonClicked)
         {
             // GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
             case 00:
-                Xor0 = Player_Choice(Player, GridSpace_00.GetComponentInChildren<Text>().text);
+                Xor0 = Player_Choice(player, GridSpace_00.GetComponentInChildren<Text>().text);
                 GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                NonEmptySpots = 1;
+                FilledSlots = 1;
                 break;
             case 01:
-                Xor0 = Player_Choice(Player, GridSpace_01.GetComponentInChildren<Text>().text);
+                Xor0 = Player_Choice(player, GridSpace_01.GetComponentInChildren<Text>().text);
                 GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                NonEmptySpots = 2;
+                FilledSlots = 2;
                 break;
             case 02:
-                Xor0 = Player_Choice(Player, GridSpace_02.GetComponentInChildren<Text>().text);
+                Xor0 = Player_Choice(player, GridSpace_02.GetComponentInChildren<Text>().text);
                 GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                NonEmptySpots = 3;
+                FilledSlots = 3;
                 break;
             case 10:
-                Xor0 = Player_Choice(Player, GridSpace_10.GetComponentInChildren<Text>().text);
+                Xor0 = Player_Choice(player, GridSpace_10.GetComponentInChildren<Text>().text);
                 GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                NonEmptySpots = 4;
+                FilledSlots = 4;
                 break;
             case 11:
-                Xor0 = Player_Choice(Player, GridSpace_11.GetComponentInChildren<Text>().text);
+                Xor0 = Player_Choice(player, GridSpace_11.GetComponentInChildren<Text>().text);
                 GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                NonEmptySpots = 5;
+                FilledSlots = 5;
                 break;
             case 12:
-                Xor0 = Player_Choice(Player, GridSpace_12.GetComponentInChildren<Text>().text);
+                Xor0 = Player_Choice(player, GridSpace_12.GetComponentInChildren<Text>().text);
                 GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                NonEmptySpots = 6;
+                FilledSlots = 6;
                 break;
             case 21:
-                Xor0 = Player_Choice(Player, GridSpace_21.GetComponentInChildren<Text>().text);
+                Xor0 = Player_Choice(player, GridSpace_21.GetComponentInChildren<Text>().text);
                 GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                NonEmptySpots = 7;
+                FilledSlots = 7;
                 break;
             case 22:
-                Xor0 = Player_Choice(Player, GridSpace_22.GetComponentInChildren<Text>().text);
+                Xor0 = Player_Choice(player, GridSpace_22.GetComponentInChildren<Text>().text);
                 GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                NonEmptySpots = 8;
+                FilledSlots = 8;
                 break;
             case 23:
-                Xor0 = Player_Choice(Player, GridSpace_23.GetComponentInChildren<Text>().text);
+                Xor0 = Player_Choice(player, GridSpace_23.GetComponentInChildren<Text>().text);
                 GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                NonEmptySpots = 9;
+                FilledSlots = 9;
                 break;
             default:
                 break;
@@ -271,11 +270,15 @@ public class GameSystemManager : MonoBehaviour
         if (PreviousValue == "A")
         {
             ChangeXor0 = true;
-            if (player == 0)
+            if (player == 1)
+            {
                 NewValue = "X";
+            }
             // WhoisthePlayer = PlayerID;
             else
+            {
                 NewValue = "O";
+            }
         }
         else
         {
@@ -284,6 +287,11 @@ public class GameSystemManager : MonoBehaviour
         }
         return NewValue;
     }
+
+    //public void UpdateUserName_ID(string UserName,int Id)
+    //{
+
+    //}
 
     private void SubmitButtonPressed()
     {

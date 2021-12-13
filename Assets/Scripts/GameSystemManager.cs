@@ -172,12 +172,12 @@ public class GameSystemManager : MonoBehaviour
         {
             // GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
             case 00:
-                Xor0 = Player_Choice(player, GridSpace_00.GetComponentInChildren<Text>().text);
+                Xor0 = Player_Choice(player, GridSpace_00.transform.GetChild(0).GetComponent<Text>().text);
                 GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
                 FilledSlots = 1;
                 break;
             case 01:
-                Xor0 = Player_Choice(player, GridSpace_01.GetComponentInChildren<Text>().text);
+                Xor0 = Player_Choice(player, GridSpace_01.transform.GetChild(0).GetComponent<Text>().text);
                 GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
                 FilledSlots = 2;
                 break;
@@ -234,10 +234,10 @@ public class GameSystemManager : MonoBehaviour
         {
             // GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
             case 00:
-                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+                GridSpace_00.transform.GetChild(0).GetComponent<Text>().text = Xor0;
                 break;
             case 01:
-                GridSpace_01.GetComponentInChildren<Text>().text = Xor0;
+                GridSpace_01.transform.GetChild(0).GetComponent<Text>().text = Xor0;
                 break;
             case 02:
                 GridSpace_02.GetComponentInChildren<Text>().text = Xor0;
@@ -280,11 +280,11 @@ public class GameSystemManager : MonoBehaviour
                 NewValue = "O";
             }
         }
-        else
-        {
-            NewValue = PreviousValue;
-            ChangeXor0 = false;
-        }
+        //else
+        //{
+        //    NewValue = PreviousValue;
+        //    ChangeXor0 = false;
+        //}
         return NewValue;
     }
 

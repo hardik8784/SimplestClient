@@ -1,12 +1,3 @@
-/*
- * Full Name: Hardik Dipakbhai Shah
- * Student ID : 101249099
- * Date Modified : December 14,2021
- * File : GameSystemManager.cs
- * Description : This is the script to Assignthe Ids and Open the Container when player collide with the help of OnTriggerEvent
- * Revision History : v0.1 > Added Comments to know the Code better before start anything & to include a program header
- */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,13 +14,11 @@ public class GameSystemManager : MonoBehaviour
 
     GameObject InfoText, InfoText2;
 
-    GameObject GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
+    //GameObject GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
 
-    GameObject TicTacToeBoard;
+    GameObject Main_TicTacToeBoard;
 
-    GameObject _GetTicTacToeManager;
-
-    public int WhoisthePlayer = 0;
+    //public int WhoisthePlayer = 0;
 
     bool ChangeXor0 = false;
 
@@ -62,26 +51,27 @@ public class GameSystemManager : MonoBehaviour
                 InfoText = go;
             else if (go.name == "InfoText2")
                 InfoText2 = go;
-            else if (go.name == "GridSpace_00")
-                GridSpace_00 = go;
-            else if (go.name == "GridSpace_01")
-                GridSpace_01 = go;
-            else if (go.name == "GridSpace_02")
-                GridSpace_02 = go;
-            else if (go.name == "GridSpace_10")
-                GridSpace_10 = go;
-            else if (go.name == "GridSpace_11")
-                GridSpace_11 = go;
-            else if (go.name == "GridSpace_12")
-                GridSpace_12 = go;
-            else if (go.name == "GridSpace_21")
-                GridSpace_21 = go;
-            else if (go.name == "GridSpace_22")
-                GridSpace_22 = go;
-            else if (go.name == "GridSpace_23")
-                GridSpace_23 = go;
-            else if (go.name == "TicTacToeBoard")
-                TicTacToeBoard = go;
+            //else if (go.name == "GridSpace_00")
+            //    GridSpace_00 = go;
+            //else if (go.name == "GridSpace_01")
+            //    GridSpace_01 = go;
+            //else if (go.name == "GridSpace_02")
+            //    GridSpace_02 = go;
+            //else if (go.name == "GridSpace_10")
+            //    GridSpace_10 = go;
+            //else if (go.name == "GridSpace_11")
+            //    GridSpace_11 = go;
+            //else if (go.name == "GridSpace_12")
+            //    GridSpace_12 = go;
+            //else if (go.name == "GridSpace_21")
+            //    GridSpace_21 = go;
+            //else if (go.name == "GridSpace_22")
+            //    GridSpace_22 = go;
+            //else if (go.name == "GridSpace_23")
+            //    GridSpace_23 = go;
+            else if (go.name == "Main_TicTacToeBoard")
+                Main_TicTacToeBoard = go;
+
         }
 
 
@@ -92,18 +82,18 @@ public class GameSystemManager : MonoBehaviour
         FindGameSessionButton.GetComponent<Button>().onClick.AddListener(FindGameSessionButtonPressed);
         PlaceHolderGameButton.GetComponent<Button>().onClick.AddListener(PlaceHolderGameButtonPressed);
 
-        GridSpace_00.GetComponent<Button>().onClick.AddListener(GridSpace_00_Cliked);
-        GridSpace_01.GetComponent<Button>().onClick.AddListener(GridSpace_01_Cliked);
-        GridSpace_02.GetComponent<Button>().onClick.AddListener(GridSpace_02_Cliked);
-        GridSpace_10.GetComponent<Button>().onClick.AddListener(GridSpace_10_Cliked);
-        GridSpace_11.GetComponent<Button>().onClick.AddListener(GridSpace_11_Cliked);
-        GridSpace_12.GetComponent<Button>().onClick.AddListener(GridSpace_12_Cliked);
-        GridSpace_21.GetComponent<Button>().onClick.AddListener(GridSpace_21_Cliked);
-        GridSpace_22.GetComponent<Button>().onClick.AddListener(GridSpace_22_Cliked);
-        GridSpace_23.GetComponent<Button>().onClick.AddListener(GridSpace_23_Cliked);
+        //GridSpace_00.GetComponent<Button>().onClick.AddListener(GridSpace_00_Cliked);
+        //GridSpace_01.GetComponent<Button>().onClick.AddListener(GridSpace_01_Cliked);
+        //GridSpace_02.GetComponent<Button>().onClick.AddListener(GridSpace_02_Cliked);
+        //GridSpace_10.GetComponent<Button>().onClick.AddListener(GridSpace_10_Cliked);
+        //GridSpace_11.GetComponent<Button>().onClick.AddListener(GridSpace_11_Cliked);
+        //GridSpace_12.GetComponent<Button>().onClick.AddListener(GridSpace_12_Cliked);
+        //GridSpace_21.GetComponent<Button>().onClick.AddListener(GridSpace_21_Cliked);
+        //GridSpace_22.GetComponent<Button>().onClick.AddListener(GridSpace_22_Cliked);
+        //GridSpace_23.GetComponent<Button>().onClick.AddListener(GridSpace_23_Cliked);
 
 
-       // ChangeGameState(GameStates.Login);
+        ChangeGameState(GameStates.Login);
 
     }
 
@@ -129,175 +119,175 @@ public class GameSystemManager : MonoBehaviour
         //}
     }
 
-    private void GridSpace_00_Cliked()
-    {
-      //  NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.OpponentTurn + " ");
-        //GamePlay(00, playerID);
-        // GamePlay(00, NetworkedClient.GetComponent<NetworkedClient>().WhoisthePlayer);
-        // Debug.Log("PlayerID : " + playerID);
-        //  Debug.Log("WhoisthePlayer:" + WhoisthePlayer);
-    }
+    //private void GridSpace_00_Cliked()
+    //{
+    //     NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.OpponentTurn + " ");
+    //    //GamePlay(00, playerID);
+    //   // GamePlay(00, NetworkedClient.GetComponent<NetworkedClient>().WhoisthePlayer);
+    //    // Debug.Log("PlayerID : " + playerID);
+    //    //  Debug.Log("WhoisthePlayer:" + WhoisthePlayer);
+    //}
 
-    private void GridSpace_01_Cliked()
-    {
+    //private void GridSpace_01_Cliked()
+    //{
+       
+    //    // GamePlay(01, WhoisthePlayer);
+    //    GamePlay(01, NetworkedClient.GetComponent<NetworkedClient>().WhoisthePlayer);
+    //}
 
-        // GamePlay(01, WhoisthePlayer);
-        GamePlay(01, NetworkedClient.GetComponent<NetworkedClient>().WhoisthePlayer);
-    }
+    //private void GridSpace_02_Cliked()
+    //{
+    //   // GamePlay(02, WhoisthePlayer);
+    //}
+    //private void GridSpace_10_Cliked()
+    //{
+    //  //  GamePlay(10, WhoisthePlayer);
+    //}
+    //private void GridSpace_11_Cliked()
+    //{
+    //  //  GamePlay(11, WhoisthePlayer);
+    //}
+    //private void GridSpace_12_Cliked()
+    //{
+    //   // GamePlay(12, WhoisthePlayer);
+    //}
+    //private void GridSpace_21_Cliked()
+    //{
+    //  //  GamePlay(21, WhoisthePlayer);
+    //}
+    //private void GridSpace_22_Cliked()
+    //{
+    //   // GamePlay(22, WhoisthePlayer);
+    //}
+    //private void GridSpace_23_Cliked()
+    //{
+    //    //GamePlay(23, WhoisthePlayer);
+    //}
+   
+    //public void GamePlay(int WhichButtonClicked, int player)
+    //{
+    //    string Xor0 = "";
+    //    int FilledSlots = 0;
 
-    private void GridSpace_02_Cliked()
-    {
-        // GamePlay(02, WhoisthePlayer);
-    }
-    private void GridSpace_10_Cliked()
-    {
-        //  GamePlay(10, WhoisthePlayer);
-    }
-    private void GridSpace_11_Cliked()
-    {
-        //  GamePlay(11, WhoisthePlayer);
-    }
-    private void GridSpace_12_Cliked()
-    {
-        // GamePlay(12, WhoisthePlayer);
-    }
-    private void GridSpace_21_Cliked()
-    {
-        //  GamePlay(21, WhoisthePlayer);
-    }
-    private void GridSpace_22_Cliked()
-    {
-        // GamePlay(22, WhoisthePlayer);
-    }
-    private void GridSpace_23_Cliked()
-    {
-        //GamePlay(23, WhoisthePlayer);
-    }
+    //    switch (WhichButtonClicked)
+    //    {
+    //        // GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
+    //        case 00:
+    //            Xor0 = Player_Choice(player, GridSpace_00.transform.GetChild(0).GetComponent<Text>().text);
+    //            GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+    //            FilledSlots = 1;
+    //            break;
+    //        case 01:
+    //            Xor0 = Player_Choice(player, GridSpace_01.transform.GetChild(0).GetComponent<Text>().text);
+    //            GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+    //            FilledSlots = 2;
+    //            break;
+    //        case 02:
+    //            Xor0 = Player_Choice(player, GridSpace_02.GetComponentInChildren<Text>().text);
+    //            GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+    //            FilledSlots = 3;
+    //            break;
+    //        case 10:
+    //            Xor0 = Player_Choice(player, GridSpace_10.GetComponentInChildren<Text>().text);
+    //            GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+    //            FilledSlots = 4;
+    //            break;
+    //        case 11:
+    //            Xor0 = Player_Choice(player, GridSpace_11.GetComponentInChildren<Text>().text);
+    //            GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+    //            FilledSlots = 5;
+    //            break;
+    //        case 12:
+    //            Xor0 = Player_Choice(player, GridSpace_12.GetComponentInChildren<Text>().text);
+    //            GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+    //            FilledSlots = 6;
+    //            break;
+    //        case 21:
+    //            Xor0 = Player_Choice(player, GridSpace_21.GetComponentInChildren<Text>().text);
+    //            GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+    //            FilledSlots = 7;
+    //            break;
+    //        case 22:
+    //            Xor0 = Player_Choice(player, GridSpace_22.GetComponentInChildren<Text>().text);
+    //            GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+    //            FilledSlots = 8;
+    //            break;
+    //        case 23:
+    //            Xor0 = Player_Choice(player, GridSpace_23.GetComponentInChildren<Text>().text);
+    //            GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
+    //            FilledSlots = 9;
+    //            break;
+    //        default:
+    //            break;
+    //    }
 
-    public void GamePlay(int WhichButtonClicked, int player)
-    {
-        string Xor0 = "";
-        int FilledSlots = 0;
+    //    if (ChangeXor0)
+    //    {
+    //        NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.OpponentTurn + "");
+    //        Debug.Log(ClientToServerSignifiers.OpponentTurn + "OpponentTurn");
+    //    }
 
-        switch (WhichButtonClicked)
-        {
-            // GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
-            case 00:
-                Xor0 = Player_Choice(player, GridSpace_00.transform.GetChild(0).GetComponent<Text>().text);
-                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                FilledSlots = 1;
-                break;
-            case 01:
-                Xor0 = Player_Choice(player, GridSpace_01.transform.GetChild(0).GetComponent<Text>().text);
-                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                FilledSlots = 2;
-                break;
-            case 02:
-                Xor0 = Player_Choice(player, GridSpace_02.GetComponentInChildren<Text>().text);
-                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                FilledSlots = 3;
-                break;
-            case 10:
-                Xor0 = Player_Choice(player, GridSpace_10.GetComponentInChildren<Text>().text);
-                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                FilledSlots = 4;
-                break;
-            case 11:
-                Xor0 = Player_Choice(player, GridSpace_11.GetComponentInChildren<Text>().text);
-                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                FilledSlots = 5;
-                break;
-            case 12:
-                Xor0 = Player_Choice(player, GridSpace_12.GetComponentInChildren<Text>().text);
-                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                FilledSlots = 6;
-                break;
-            case 21:
-                Xor0 = Player_Choice(player, GridSpace_21.GetComponentInChildren<Text>().text);
-                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                FilledSlots = 7;
-                break;
-            case 22:
-                Xor0 = Player_Choice(player, GridSpace_22.GetComponentInChildren<Text>().text);
-                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                FilledSlots = 8;
-                break;
-            case 23:
-                Xor0 = Player_Choice(player, GridSpace_23.GetComponentInChildren<Text>().text);
-                GridSpace_00.GetComponentInChildren<Text>().text = Xor0;
-                FilledSlots = 9;
-                break;
-            default:
-                break;
-        }
+    //}
 
-        //if (ChangeXor0)
-        //{
-        //    NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.OpponentTurn + "");
-        //    Debug.Log(ClientToServerSignifiers.OpponentTurn + "OpponentTurn");
-        //}
+    //public void SetXor0(int GridSpace_Number, string Xor0)
+    //{
+    //    switch (GridSpace_Number)
+    //    {
+    //        // GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
+    //        case 00:
+    //            GridSpace_00.transform.GetChild(0).GetComponent<Text>().text = Xor0;
+    //            break;
+    //        case 01:
+    //            GridSpace_01.transform.GetChild(0).GetComponent<Text>().text = Xor0;
+    //            break;
+    //        case 02:
+    //            GridSpace_02.GetComponentInChildren<Text>().text = Xor0;
+    //            break;
+    //        case 10:
+    //            GridSpace_10.GetComponentInChildren<Text>().text = Xor0;
+    //            break;
+    //        case 11:
+    //            GridSpace_11.GetComponentInChildren<Text>().text = Xor0;
+    //            break;
+    //        case 12:
+    //            GridSpace_12.GetComponentInChildren<Text>().text = Xor0;
+    //            break;
+    //        case 21:
+    //            GridSpace_21.GetComponentInChildren<Text>().text = Xor0;
+    //            break;
+    //        case 22:
+    //            GridSpace_22.GetComponentInChildren<Text>().text = Xor0;
+    //            break;
+    //        case 23:
+    //            GridSpace_23.GetComponentInChildren<Text>().text = Xor0;
+    //            //GridSpace_23.transform.GetChild(0).GetComponent<Text>().text = Xor0;
+    //            break;
+    //    }
+    //}
 
-    }
-
-    public void SetXor0(int GridSpace_Number, string Xor0)
-    {
-        switch (GridSpace_Number)
-        {
-            // GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
-            case 00:
-                GridSpace_00.transform.GetChild(0).GetComponent<Text>().text = Xor0;
-                break;
-            case 01:
-                GridSpace_01.transform.GetChild(0).GetComponent<Text>().text = Xor0;
-                break;
-            case 02:
-                GridSpace_02.GetComponentInChildren<Text>().text = Xor0;
-                break;
-            case 10:
-                GridSpace_10.GetComponentInChildren<Text>().text = Xor0;
-                break;
-            case 11:
-                GridSpace_11.GetComponentInChildren<Text>().text = Xor0;
-                break;
-            case 12:
-                GridSpace_12.GetComponentInChildren<Text>().text = Xor0;
-                break;
-            case 21:
-                GridSpace_21.GetComponentInChildren<Text>().text = Xor0;
-                break;
-            case 22:
-                GridSpace_22.GetComponentInChildren<Text>().text = Xor0;
-                break;
-            case 23:
-                GridSpace_23.GetComponentInChildren<Text>().text = Xor0;
-                //GridSpace_23.transform.GetChild(0).GetComponent<Text>().text = Xor0;
-                break;
-        }
-    }
-
-    public string Player_Choice(int player, string PreviousValue)
-    {
-        string NewValue = "";
-        if (PreviousValue == "A")
-        {
-            ChangeXor0 = true;
-            if (player == 1)
-            {
-                NewValue = "X";
-            }
-            // WhoisthePlayer = PlayerID;
-            else
-            {
-                NewValue = "O";
-            }
-        }
-        //else
-        //{
-        //    NewValue = PreviousValue;
-        //    ChangeXor0 = false;
-        //}
-        return NewValue;
-    }
+    //public string Player_Choice(int player, string PreviousValue)
+    //{
+    //    string NewValue = "";
+    //    //if (PreviousValue == "A")
+    //    //{
+    //    //    ChangeXor0 = true;
+    //        if (player == 1)
+    //        {
+    //            NewValue = "X";
+    //        }
+    //        // WhoisthePlayer = PlayerID;
+    //    //    else
+    //    //    {
+    //    //        NewValue = "O";
+    //    //    }
+    //    //}
+    //    //else
+    //    //{
+    //    //    NewValue = PreviousValue;
+    //    //    ChangeXor0 = false;
+    //    //}
+    //    return NewValue;
+    //}
 
     //public void UpdateUserName_ID(string UserName,int Id)
     //{
@@ -313,14 +303,14 @@ public class GameSystemManager : MonoBehaviour
 
         if (ToggleLogin.GetComponent<Toggle>().isOn)
         {
-         //   NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.Login + "," + n + "," + p);
+            NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.Login + "," + n + "," + p);
 
-         //   ChangeGameState(GameStates.MainMenu);
+            ChangeGameState(GameStates.MainMenu);
             //Debug.Log(ClientToServerSignifiers.Login + "," + n + "," + p);
         }
         else
         {
-          //  NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.CreateAccount + "," + n + "," + p);
+            NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.CreateAccount + "," + n + "," + p);
             //Debug.Log(ClientToServerSignifiers.CreateAccount + "," + n + "," + p);
         }
 
@@ -328,16 +318,16 @@ public class GameSystemManager : MonoBehaviour
 
     private void FindGameSessionButtonPressed()
     {
-       // NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.AddToGameSessionQueue + "");
+        NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.AddToGameSessionQueue + "");
 
-       // ChangeGameState(GameStates.WaitingForMatch);
+        ChangeGameState(GameStates.WaitingForMatch);
 
         Debug.Log("Changing the state Waiting For Match");
     }
 
     private void PlaceHolderGameButtonPressed()
     {
-       // NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.TicTacToePlay + "");
+        NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.TicTacToePlay + "");
     }
 
     private void ToggleCreateValueChanged(bool newValue)
@@ -352,23 +342,23 @@ public class GameSystemManager : MonoBehaviour
 
     public void ChangeGameState(int newState)
     {
-        ////InputFieldUserName, InputFieldPassword, SubmitButton, ToggleLogin, ToggleCreate;
+        //InputFieldUserName, InputFieldPassword, SubmitButton, ToggleLogin, ToggleCreate;
 
-        ////NetworkedClient;
+        //NetworkedClient;
 
-        ////FindGameSessionButton, PlaceHolderGameButton;
+        //FindGameSessionButton, PlaceHolderGameButton;
 
-        ////GameObject GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
+        //GameObject GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
 
-        //InputFieldUserName.SetActive(false);
-        //InputFieldPassword.SetActive(false);
-        //SubmitButton.SetActive(false);
-        //ToggleLogin.SetActive(false);
-        //ToggleCreate.SetActive(false);
-        //FindGameSessionButton.SetActive(false);
-        //PlaceHolderGameButton.SetActive(false);
-        //InfoText.SetActive(false);
-        //InfoText2.SetActive(false);
+        InputFieldUserName.SetActive(false);
+        InputFieldPassword.SetActive(false);
+        SubmitButton.SetActive(false);
+        ToggleLogin.SetActive(false);
+        ToggleCreate.SetActive(false);
+        FindGameSessionButton.SetActive(false);
+        PlaceHolderGameButton.SetActive(false);
+        InfoText.SetActive(false);
+        InfoText2.SetActive(false);
         //GridSpace_00.SetActive(false);
         //GridSpace_01.SetActive(false);
         //GridSpace_02.SetActive(false);
@@ -378,57 +368,59 @@ public class GameSystemManager : MonoBehaviour
         //GridSpace_21.SetActive(false);
         //GridSpace_22.SetActive(false);
         //GridSpace_23.SetActive(false);
-        //TicTacToeBoard.SetActive(false);
-        ////  NetworkedClient.SetActive(false);
+        Main_TicTacToeBoard.SetActive(false);
+        //JoinGameRoom.SetActive(false);
+        //  NetworkedClient.SetActive(false);
 
-        //if (newState == GameStates.Login)
-        //{
-        //    InputFieldUserName.SetActive(true);
-        //    InputFieldPassword.SetActive(true);
-        //    SubmitButton.SetActive(true);
-        //    ToggleLogin.SetActive(true);
-        //    ToggleCreate.SetActive(true);
-        //    InfoText.SetActive(true);
-        //    InfoText2.SetActive(true);
-        //}
-        //else if (newState == GameStates.MainMenu)
-        //{
-        //    FindGameSessionButton.SetActive(true);
-        //}
-        //else if (newState == GameStates.WaitingForMatch)
-        //{
-        //    //PlaceHolderGameButton.SetActive(true);
-        //}
-        //else if (newState == GameStates.TicTacToeStarted)
-        //{
-        //    Debug.Log("TicTacToe Board SetActive to True");
-
-        //    // PlaceHolderGameButton.SetActive(true);
-        //    TicTacToeBoard.SetActive(true);
-        //    GridSpace_00.SetActive(true);
-        //    GridSpace_01.SetActive(true);
-        //    GridSpace_02.SetActive(true);
-        //    GridSpace_10.SetActive(true);
-        //    GridSpace_11.SetActive(true);
-        //    GridSpace_12.SetActive(true);
-        //    GridSpace_21.SetActive(true);
-        //    GridSpace_22.SetActive(true);
-        //    GridSpace_23.SetActive(true);
-        //}
-
+        if (newState == GameStates.Login)
+        {
+            InputFieldUserName.SetActive(true);
+            InputFieldPassword.SetActive(true);
+            SubmitButton.SetActive(true);
+            ToggleLogin.SetActive(true);
+            ToggleCreate.SetActive(true);
+            InfoText.SetActive(true);
+            InfoText2.SetActive(true);
+        }
+        else if(newState == GameStates.MainMenu)
+        {
+            FindGameSessionButton.SetActive(true);
+        }
+        else if (newState == GameStates.WaitingForMatch)
+        {
+            //PlaceHolderGameButton.SetActive(true);
+        }
+        else if (newState == GameStates.TicTacToeStarted)
+        {
+            Debug.Log("TicTacToe Board SetActive to True");
+            Main_TicTacToeBoard.SetActive(true);
+            //JoinGameRoom.SetActive(true);
+            //PlaceHolderGameButton.SetActive(true);
+            //TicTacToeBoard.SetActive(true);
+            //GridSpace_00.SetActive(true);
+            //GridSpace_01.SetActive(true);
+            //GridSpace_02.SetActive(true);
+            //GridSpace_10.SetActive(true);
+            //GridSpace_11.SetActive(true);
+            //GridSpace_12.SetActive(true);
+            //GridSpace_21.SetActive(true);
+            //GridSpace_22.SetActive(true);
+            //GridSpace_23.SetActive(true);
+        }
+       
     }
 }
 
 
-//public static class GameStates
-//{
-//    public const int Login = 1;
+public static class GameStates
+{
+    public const int Login = 1;
 
-//    public const int MainMenu = 2;
+    public const int MainMenu = 2;
 
-//    public const int WaitingForMatch = 3;
+    public const int WaitingForMatch = 3;
 
-//    public const int TicTacToeStarted = 4;
+    public const int TicTacToeStarted = 4;
 
-//    //public const int StartTicTacToe = 5;
-//}
+    //public const int StartTicTacToe = 5;
+}

@@ -57,9 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\LazyProfessorClient.cs" />
+    <Compile Include="Assets\Scripts\TicTacToeManager.cs" />
     <Compile Include="Assets\Scripts\NetworkedClient.cs" />
     <Compile Include="Assets\Scripts\GameSystemManager.cs" />
-    <Compile Include="Assets\Scripts\TicTacToeManager.cs" />
+    <Compile Include="Assets\Scripts\ButtonManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

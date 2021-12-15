@@ -10,9 +10,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TicTacToeManager : MonoBehaviour
 {
+
+    // Start is called before the first frame update // tic tac toe UI
+    //
+    //[0,0] [0,1] [0,2]
+    //[1,0] [1,1] [1,2]
+    //[2,0] [2,1] [2,2]
+    //
+    private int[,] ticTacToeboard;
+    public int[,] GetTicTacToeBoard => ticTacToeboard;
+
+    public string PlayerName;
+    public Text ShowChat, PlayerIDText;
+    InputField InputFieldChat;
+    Button SendButton;
+
+    // player variables
+    // if current turn is not equal to the player ID, then it's not the player's turn to move
+    [SerializeField] private int playerID;
+
+    public int PlayerID
+    {
+        get => playerID;
+        set
+        {
+            playerID = value;
+        }
+    }
+
+  
+    
+
     // Start is called before the first frame update
     void Start()
     {

@@ -1,13 +1,3 @@
-/*
- * Full Name: Hardik Dipakbhai Shah
- * Student ID : 101249099
- * Date Modified : December 14,2021
- * File : NetworkedClient.cs
- * Description : This is the script to Assignthe Ids and Open the Container when player collide with the help of OnTriggerEvent
- * Revision History : v0.1 > Added Comments to know the Code better before start anything & to include a program header
- */
-
-
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -26,11 +16,10 @@ public class NetworkedClient : MonoBehaviour
     byte error;
     bool isConnected = false;
     int ourClientID;
-   
 
     GameObject GameSystemManager;
 
-    string PlayerName;
+    TicTacToeManager TicTacToeManager_;
 
     public int WhoisthePlayer = 0;
 
@@ -44,7 +33,7 @@ public class NetworkedClient : MonoBehaviour
                 GameSystemManager = go;
         }
 
-        Connect();
+            Connect();
     }
 
     // Update is called once per frame
@@ -86,7 +75,7 @@ public class NetworkedClient : MonoBehaviour
             }
         }
     }
-
+    
     private void Connect()
     {
 
@@ -114,12 +103,12 @@ public class NetworkedClient : MonoBehaviour
             }
         }
     }
-
+    
     public void Disconnect()
     {
         NetworkTransport.Disconnect(hostID, connectionID, out error);
     }
-
+    
     public void SendMessageToHost(string msg)
     {
         byte[] buffer = Encoding.Unicode.GetBytes(msg);
@@ -130,36 +119,35 @@ public class NetworkedClient : MonoBehaviour
     {
         Debug.Log("msg recieved = " + msg + ".  connection id = " + id);
 
-        //string[] csv = msg.Split(',');
+        string[] csv = msg.Split(',');
 
-        //int Signifier = int.Parse(csv[0]);
+        int Signifier = int.Parse(csv[0]);
 
-        //if (Signifier == ServerToClientSignifiers.LoginResponse)
-        //{
-        //    //On Success
-        //    int LoginResultSignifier = int.Parse(csv[1]);
+        if(Signifier == ServerToClientSignifiers.LoginResponse)
+        {
+            //On Success
+            int LoginResultSignifier = int.Parse(csv[1]);
 
-        //    if (LoginResultSignifier == LoginResponses.Success)
-        //    {
-        //        Debug.Log("Entered into the loop");
-        //        GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.MainMenu);
-        //    }
-        //}
-        //else if (Signifier == ServerToClientSignifiers.GameSessionStarted)
-        //{
-        //    GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.TicTacToeStarted);
-        //    Debug.Log("Next Item,Playing tic tac toe!!!");
-        //    WhoisthePlayer = id;
-        //    PlayerName = csv[1];
-        //    Debug.Log("PlayerName : " + PlayerName);
-        //    Debug.Log("Player ID : " + WhoisthePlayer);
-        //}
-        //else if (Signifier == ServerToClientSignifiers.OpponentTicTacToePlay)
-        //{
-        //    Debug.Log("OpponentTicTacToePlay Requested");
-        //    Debug.Log("Player1 id : " + int.Parse(csv[1]));
-        //    Debug.Log("Player2 id : " + int.Parse(csv[2]));
-        //}
+            if(LoginResultSignifier == LoginResponses.Success)
+            {
+                Debug.Log("Entered into the loop");
+                GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.MainMenu);
+                WhoisthePlayer = id;
+                Debug.Log("Player ID : " + WhoisthePlayer);
+
+            }
+        }
+        else if (Signifier == ServerToClientSignifiers.GameSessionStarted)
+        {
+            GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.TicTacToeStarted);
+            Debug.Log("Next Item,Playing tic tac toe!!!");
+        }
+        else if (Signifier == ServerToClientSignifiers.OpponentTicTacToePlay)
+        {
+            Debug.Log("OpponentTicTacToePlay Requested");
+            Debug.Log("Player1 id : " +  int.Parse(csv[1]));
+            Debug.Log("Player2 id : " + int.Parse(csv[2]));
+        }
     }
 
     public bool IsConnected()
@@ -171,43 +159,43 @@ public class NetworkedClient : MonoBehaviour
 }
 
 
-//public static class ClientToServerSignifiers
-//{
-//    public const int Login = 1;
+public static class ClientToServerSignifiers
+{
+    public const int Login = 1;
 
-//    public const int CreateAccount = 2;
+    public const int CreateAccount = 2;
 
-//    public const int AddToGameSessionQueue = 3;
+    public const int AddToGameSessionQueue = 3;
 
-//    public const int TicTacToePlay = 4;
+    public const int  TicTacToePlay = 4;
 
-//    public const int OpponentTurn = 5;
-//}
+    public const int OpponentTurn = 5;
+}
 
-//public static class ServerToClientSignifiers
-//{
-//    public const int LoginResponse = 1;
+public static class ServerToClientSignifiers
+{
+    public const int LoginResponse = 1;
 
-//    public const int GameSessionStarted = 2;
+    public const int GameSessionStarted = 2;
 
-//    public const int OpponentTicTacToePlay = 3;
+    public const int OpponentTicTacToePlay = 3;
 
-//    public const int GameStarted = 4;
+    public const int GameStarted = 4;
 
-//    //public const int LoginFailure = 2;
+    //public const int LoginFailure = 2;
 
-//    //public const int CreateAccountSuccess = 1;
+    //public const int CreateAccountSuccess = 1;
 
-//    //public const int CreateAccountFailure = 2;
-//}
+    //public const int CreateAccountFailure = 2;
+}
 
-//public static class LoginResponses
-//{
-//    public const int Success = 1;
+public static class LoginResponses
+{
+    public const int Success = 1;
 
-//    public const int FailureNameInUse = 2;
+    public const int FailureNameInUse = 2;
 
-//    public const int FailureNameNotFound = 3;
+    public const int FailureNameNotFound = 3;
 
-//    public const int IncorrectPassword = 4;
-//}
+    public const int IncorrectPassword = 4;
+}

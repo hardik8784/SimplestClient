@@ -1,3 +1,13 @@
+/*
+ * Full Name: Hardik Dipakbhai Shah
+ * Student ID : 101249099
+ * Date Modified : December 14,2021
+ * File : NetworkedClient.cs
+ * Description : This is the script to Assignthe Ids and Open the Container when player collide with the help of OnTriggerEvent
+ * Revision History : v0.1 > Added Comments to know the Code better before start anything & to include a program header
+ */
+
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -18,6 +28,8 @@ public class NetworkedClient : MonoBehaviour
     int ourClientID;
 
     GameObject GameSystemManager;
+
+    string PlayerName;
 
     public int WhoisthePlayer = 0;
 
@@ -130,15 +142,16 @@ public class NetworkedClient : MonoBehaviour
             {
                 Debug.Log("Entered into the loop");
                 GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.MainMenu);
-                WhoisthePlayer = id;
-                Debug.Log("Player ID : " + WhoisthePlayer);
-
             }
         }
         else if (Signifier == ServerToClientSignifiers.GameSessionStarted)
         {
             GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.TicTacToeStarted);
             Debug.Log("Next Item,Playing tic tac toe!!!");
+            WhoisthePlayer = id;
+            PlayerName = csv[1];
+            Debug.Log("PlayerName : " + PlayerName);
+            Debug.Log("Player ID : " + WhoisthePlayer);
         }
         else if (Signifier == ServerToClientSignifiers.OpponentTicTacToePlay)
         {

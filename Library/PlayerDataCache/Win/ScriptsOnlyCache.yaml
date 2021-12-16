@@ -4,7 +4,9 @@ ScriptsOnlyBuild:
     - ButtonManager
     - GameSystemManager
     - LazyProfessorClient
+    - Messages
     - NetworkedClient
+    - TicTacToeManager
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
@@ -65,39 +67,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1462}
     - Class: 114
-      Script: {instanceID: 1522}
+      Script: {instanceID: 1514}
     - Class: 114
-      Script: {instanceID: 1632}
+      Script: {instanceID: 1624}
     - Class: 114
-      Script: {instanceID: 1790}
+      Script: {instanceID: 1782}
     - Class: 114
-      Script: {instanceID: 1896}
+      Script: {instanceID: 1888}
+    - Class: 114
+      Script: {instanceID: 2088}
     - Class: 114
       Script: {instanceID: 2096}
     - Class: 114
-      Script: {instanceID: 2104}
+      Script: {instanceID: 2458}
     - Class: 114
-      Script: {instanceID: 2466}
+      Script: {instanceID: 2604}
     - Class: 114
-      Script: {instanceID: 2612}
+      Script: {instanceID: 2644}
     - Class: 114
-      Script: {instanceID: 2652}
+      Script: {instanceID: 2720}
     - Class: 114
-      Script: {instanceID: 2782}
+      Script: {instanceID: 2758}
     - Class: 114
-      Script: {instanceID: 2832}
+      Script: {instanceID: 2776}
     - Class: 114
-      Script: {instanceID: 2986}
+      Script: {instanceID: 2826}
     - Class: 114
-      Script: {instanceID: 3344}
+      Script: {instanceID: 2980}
     - Class: 114
-      Script: {instanceID: 4208}
+      Script: {instanceID: 3338}
     - Class: 114
-      Script: {instanceID: 4536}
+      Script: {instanceID: 4202}
     - Class: 114
-      Script: {instanceID: 4582}
+      Script: {instanceID: 4214}
     - Class: 114
-      Script: {instanceID: 40508}
+      Script: {instanceID: 4532}
+    - Class: 114
+      Script: {instanceID: 4578}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -297,10 +303,16 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 72dd82d334bc5de64622e355cf8f1cf3
+      Hash: 76ddc8043fae064781778f7ec548c8e5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TicTacToeManager
+  - hash:
+      serializedVersion: 2
+      Hash: 212f8f9481c35daa7f2a8bfe499a94d3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Messages
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -399,7 +411,7 @@ ScriptsOnlyBuild:
     className: ContentSizeFitter
   - hash:
       serializedVersion: 2
-      Hash: 2abe8f469e000ee878ed9b6164e4270b
+      Hash: 69d6d34f3b91436ed01ab1286d03fd83
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkedClient
@@ -579,6 +591,12 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
+      Hash: a284e589237fbb48f29443275ab02be2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ButtonManager
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
@@ -649,12 +667,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.IK.Runtime.dll
     namespaceName: UnityEngine.U2D.IK
     className: FabrikSolver2D
-  - hash:
-      serializedVersion: 2
-      Hash: a284e589237fbb48f29443275ab02be2
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ButtonManager
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

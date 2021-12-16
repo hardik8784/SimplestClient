@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7765547140171407722}
   - component: {fileID: 4527451811883955572}
   - component: {fileID: 3755002345145362852}
+  - component: {fileID: 3570430067772493556}
   m_Layer: 5
   m_Name: GridSpace
   m_TagString: Untagged
@@ -26,9 +27,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3852851767139723063}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9195312, y: 0.9195312, z: 0.9195312}
   m_Children:
   - {fileID: 1284273513647309987}
   m_Father: {fileID: 0}
@@ -121,6 +122,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3570430067772493556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3852851767139723063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1b2b1a37197bad4d8d28ecca74d3476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XPos: 0
+  YPos: 0
 --- !u!1 &7674429715231061019
 GameObject:
   m_ObjectHideFlags: 0

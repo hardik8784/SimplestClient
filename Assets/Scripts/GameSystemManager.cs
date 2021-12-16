@@ -16,11 +16,13 @@ public class GameSystemManager : MonoBehaviour
 
     //GameObject GridSpace_00, GridSpace_01, GridSpace_02, GridSpace_10, GridSpace_11, GridSpace_12, GridSpace_21, GridSpace_22, GridSpace_23;
 
-    GameObject Main_TicTacToeBoard;
+    GameObject MainTicTacToeBoard;
+
+    public GameObject GetMain_TicTacToeBoard => MainTicTacToeBoard;
 
     //public int WhoisthePlayer = 0;
 
-    bool ChangeXor0 = false;
+   // bool ChangeXor0 = false;
 
     //[SerializeField] public int playerID;
 
@@ -70,7 +72,7 @@ public class GameSystemManager : MonoBehaviour
             //else if (go.name == "GridSpace_23")
             //    GridSpace_23 = go;
             else if (go.name == "Main_TicTacToeBoard")
-                Main_TicTacToeBoard = go;
+                MainTicTacToeBoard = go;
 
         }
 
@@ -80,7 +82,7 @@ public class GameSystemManager : MonoBehaviour
         ToggleLogin.GetComponent<Toggle>().onValueChanged.AddListener(ToggleLoginValueChanged);
 
         FindGameSessionButton.GetComponent<Button>().onClick.AddListener(FindGameSessionButtonPressed);
-        PlaceHolderGameButton.GetComponent<Button>().onClick.AddListener(PlaceHolderGameButtonPressed);
+        //PlaceHolderGameButton.GetComponent<Button>().onClick.AddListener(PlaceHolderGameButtonPressed);
 
         //GridSpace_00.GetComponent<Button>().onClick.AddListener(GridSpace_00_Cliked);
         //GridSpace_01.GetComponent<Button>().onClick.AddListener(GridSpace_01_Cliked);
@@ -93,7 +95,7 @@ public class GameSystemManager : MonoBehaviour
         //GridSpace_23.GetComponent<Button>().onClick.AddListener(GridSpace_23_Cliked);
 
 
-        ChangeGameState(GameStates.Login);
+        ChangeGameState(GameStates.LoginMenu);
 
     }
 
@@ -301,34 +303,36 @@ public class GameSystemManager : MonoBehaviour
         string n = InputFieldUserName.GetComponent<InputField>().text;
         string p = InputFieldPassword.GetComponent<InputField>().text;
 
+        string msg;
+
         if (ToggleLogin.GetComponent<Toggle>().isOn)
         {
             NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.Login + "," + n + "," + p);
 
-            ChangeGameState(GameStates.MainMenu);
-            //Debug.Log(ClientToServerSignifiers.Login + "," + n + "," + p);
+            //ChangeGameState(GameStates.MainMenu);
+            Debug.Log(ClientToServerSignifiers.Login + "," + n + "," + p);
         }
         else
         {
             NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.CreateAccount + "," + n + "," + p);
-            //Debug.Log(ClientToServerSignifiers.CreateAccount + "," + n + "," + p);
+            Debug.Log(ClientToServerSignifiers.CreateAccount + "," + n + "," + p);
         }
 
     }
 
     private void FindGameSessionButtonPressed()
     {
-        NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.AddToGameSessionQueue + "");
+        NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.WaitingToJoinGameRoom + "");
 
-        ChangeGameState(GameStates.WaitingForMatch);
+        ChangeGameState(GameStates.WaitingForPlayers);
 
         Debug.Log("Changing the state Waiting For Match");
     }
 
-    private void PlaceHolderGameButtonPressed()
-    {
-        NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.TicTacToePlay + "");
-    }
+    //private void PlaceHolderGameButtonPressed()
+    //{
+    //    NetworkedClient.GetComponent<NetworkedClient>().SendMessageToHost(ClientToServerSignifiers.TicTacToePlay + "");
+    //}
 
     private void ToggleCreateValueChanged(bool newValue)
     {
@@ -356,7 +360,7 @@ public class GameSystemManager : MonoBehaviour
         ToggleLogin.SetActive(false);
         ToggleCreate.SetActive(false);
         FindGameSessionButton.SetActive(false);
-        PlaceHolderGameButton.SetActive(false);
+        //PlaceHolderGameButton.SetActive(false);
         InfoText.SetActive(false);
         InfoText2.SetActive(false);
         //GridSpace_00.SetActive(false);
@@ -368,11 +372,11 @@ public class GameSystemManager : MonoBehaviour
         //GridSpace_21.SetActive(false);
         //GridSpace_22.SetActive(false);
         //GridSpace_23.SetActive(false);
-        Main_TicTacToeBoard.SetActive(false);
+        MainTicTacToeBoard.SetActive(false);
         //JoinGameRoom.SetActive(false);
         //  NetworkedClient.SetActive(false);
 
-        if (newState == GameStates.Login)
+        if (newState == GameStates.LoginMenu)
         {
             InputFieldUserName.SetActive(true);
             InputFieldPassword.SetActive(true);
@@ -386,14 +390,14 @@ public class GameSystemManager : MonoBehaviour
         {
             FindGameSessionButton.SetActive(true);
         }
-        else if (newState == GameStates.WaitingForMatch)
+        else if (newState == GameStates.WaitingForPlayers)
         {
             //PlaceHolderGameButton.SetActive(true);
         }
-        else if (newState == GameStates.TicTacToeStarted)
+        else if (newState == GameStates.TicTacToe)
         {
             Debug.Log("TicTacToe Board SetActive to True");
-            Main_TicTacToeBoard.SetActive(true);
+            MainTicTacToeBoard.SetActive(true);
             //JoinGameRoom.SetActive(true);
             //PlaceHolderGameButton.SetActive(true);
             //TicTacToeBoard.SetActive(true);
@@ -411,16 +415,10 @@ public class GameSystemManager : MonoBehaviour
     }
 }
 
-
-public static class GameStates
+static public class GameStates
 {
-    public const int Login = 1;
-
+    public const int LoginMenu = 1;
     public const int MainMenu = 2;
-
-    public const int WaitingForMatch = 3;
-
-    public const int TicTacToeStarted = 4;
-
-    //public const int StartTicTacToe = 5;
+    public const int WaitingForPlayers = 3;
+    public const int TicTacToe = 4;
 }

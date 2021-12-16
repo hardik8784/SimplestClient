@@ -17,23 +17,26 @@ public class NetworkedClient : MonoBehaviour
     bool isConnected = false;
     int ourClientID;
 
+    string nameDisplay = "";
+
     GameObject GameSystemManager;
-
+    [SerializeField]
     TicTacToeManager TicTacToeManager_;
-
-    public int WhoisthePlayer = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        // search for the game system manager in the client side
         foreach (GameObject go in allObjects)
         {
-            if (go.name == "GameSystemManager")
+            if (go.GetComponent<GameSystemManager>() != null)
+            {
                 GameSystemManager = go;
+            }
         }
-
-            Connect();
+        //TicTacToeManager_ = GameSystemManager.GetComponent<GameSystemManager>().GetMain_TicTacToeBoard.GetComponent<TicTacToeManager>();
+        Connect();
     }
 
     // Update is called once per frame
@@ -123,32 +126,67 @@ public class NetworkedClient : MonoBehaviour
 
         int Signifier = int.Parse(csv[0]);
 
-        if(Signifier == ServerToClientSignifiers.LoginResponse)
+        if (Signifier == ServerToClientSignifiers.AccountCreationComplete)
         {
-            //On Success
-            int LoginResultSignifier = int.Parse(csv[1]);
-
-            if(LoginResultSignifier == LoginResponses.Success)
-            {
-                Debug.Log("Entered into the loop");
-                GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.MainMenu);
-                WhoisthePlayer = id;
-                Debug.Log("Player ID : " + WhoisthePlayer);
-
-            }
+            GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.MainMenu);
         }
-        else if (Signifier == ServerToClientSignifiers.GameSessionStarted)
+        else if (Signifier == ServerToClientSignifiers.LoginComplete)
         {
-            GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.TicTacToeStarted);
-            Debug.Log("Next Item,Playing tic tac toe!!!");
+            TicTacToeManager_.PlayerName = csv[1];
+            GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.MainMenu);
         }
-        else if (Signifier == ServerToClientSignifiers.OpponentTicTacToePlay)
+        else if (Signifier == ServerToClientSignifiers.AccountCreationFailed)
         {
-            Debug.Log("OpponentTicTacToePlay Requested");
-            Debug.Log("Player1 id : " +  int.Parse(csv[1]));
-            Debug.Log("Player2 id : " + int.Parse(csv[2]));
+            Debug.Log("Account Not Created, please try again");
+        }
+        else if (Signifier == ServerToClientSignifiers.LoginFailed)
+        {
+            Debug.Log("Login Failed, please try again");
+        }
+
+        else if (Signifier == ServerToClientSignifiers.OpponentPlay)
+        {
+            // receive actions from the opponent
+            TicTacToeManager_.ServerPlacePosition(int.Parse(csv[1]), int.Parse(csv[2]), int.Parse(csv[3]));
+        }
+
+        // should the game room be established, start the tic tac toe game
+        else if (Signifier == ServerToClientSignifiers.GameStart)
+        {
+            GameSystemManager.GetComponent<GameSystemManager>().ChangeGameState(GameStates.TicTacToe);
+            TicTacToeManager_.PlayerTurn = 1; 
+            TicTacToeManager_.PlayerID = int.Parse(csv[1]); 
+
+            if (TicTacToeManager_.PlayerID == 1 ||
+            TicTacToeManager_.PlayerID == 2)
+
+                TicTacToeManager_.IDDisplay.text = "PlayerID: " + TicTacToeManager_.PlayerName;
+
+        }
+        else if (Signifier == ServerToClientSignifiers.SendMessage)
+        {
+            Debug.Log("Message: " + csv[1]);
+
+            TicTacToeManager_.ReceiveMessage(csv[1]);
+        }
+        else if (Signifier == ServerToClientSignifiers.NotifyOpponentWin)
+        {
+            Debug.Log("Your Compititor has won: " + csv[1]);
+            TicTacToeManager_.GameOverOnWin();
+        }
+        else if (Signifier == ServerToClientSignifiers.GameReset)
+        {
+            Debug.Log("Opponent resets the game");
+            TicTacToeManager_.ResetGame();
+    
+        }
+        else if (Signifier == ServerToClientSignifiers.ChangeTurn)
+        {
+           
+            TicTacToeManager_.CheckTurn(int.Parse(csv[1]));
         }
     }
+
 
     public bool IsConnected()
     {
@@ -161,41 +199,24 @@ public class NetworkedClient : MonoBehaviour
 
 public static class ClientToServerSignifiers
 {
-    public const int Login = 1;
-
-    public const int CreateAccount = 2;
-
-    public const int AddToGameSessionQueue = 3;
-
-    public const int  TicTacToePlay = 4;
-
-    public const int OpponentTurn = 5;
+    public const int CreateAccount = 1;
+    public const int Login = 2;
+    public const int WaitingToJoinGameRoom = 3;
+    public const int TicTacToe = 4; 
+    public const int PlayerAction = 5;
+    public const int SendPresetMessage = 6;
+    public const int PlayerWins = 7;
 }
-
 public static class ServerToClientSignifiers
 {
-    public const int LoginResponse = 1;
-
-    public const int GameSessionStarted = 2;
-
-    public const int OpponentTicTacToePlay = 3;
-
-    public const int GameStarted = 4;
-
-    //public const int LoginFailure = 2;
-
-    //public const int CreateAccountSuccess = 1;
-
-    //public const int CreateAccountFailure = 2;
-}
-
-public static class LoginResponses
-{
-    public const int Success = 1;
-
-    public const int FailureNameInUse = 2;
-
-    public const int FailureNameNotFound = 3;
-
-    public const int IncorrectPassword = 4;
+    public const int LoginComplete = 1;
+    public const int LoginFailed = 2;
+    public const int AccountCreationComplete = 3;
+    public const int AccountCreationFailed = 4;
+    public const int OpponentPlay = 5;
+    public const int GameStart = 6;
+    public const int SendMessage = 7;
+    public const int NotifyOpponentWin = 8; 
+    public const int ChangeTurn = 9;
+    public const int GameReset = 10;
 }

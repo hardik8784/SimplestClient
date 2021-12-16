@@ -160,7 +160,7 @@ public class NetworkedClient : MonoBehaviour
             if (TicTacToeManager_.PlayerID == 1 ||
             TicTacToeManager_.PlayerID == 2)
 
-                TicTacToeManager_.IDDisplay.text = "PlayerID: " + TicTacToeManager_.PlayerName;
+                TicTacToeManager_.IDDisplay.text = "Player Name: " + TicTacToeManager_.PlayerName;
 
         }
         else if (Signifier == ServerToClientSignifiers.SendMessage)
@@ -206,6 +206,7 @@ public static class ClientToServerSignifiers
     public const int PlayerAction = 5;
     public const int SendPresetMessage = 6;
     public const int PlayerWins = 7;
+    public const int ResetGame = 8;
 }
 public static class ServerToClientSignifiers
 {

@@ -74,7 +74,7 @@ public class ButtonManager : MonoBehaviour
     {
         if (row == XPos && column == YPos)
         {
-            ButtonConnected.transform.GetChild(0).GetComponent<Text>().text = ""; // test
+            ButtonConnected.transform.GetChild(0).GetComponent<Text>().text = ""; 
             if (ticTacToeManagerRef.PlayerID <= 2)
             {
                 ButtonConnected.interactable = true;
@@ -82,11 +82,11 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    public void ButtonOnTurnChange(int row, int column, int turnArgument)
+    public void ButtonOnTurnChange(int row, int column, int TurnCounter)
     {
         if (row == XPos && column == YPos)
         {
-            if (ticTacToeManagerRef.PlayerID == turnArgument)
+            if (ticTacToeManagerRef.PlayerID == TurnCounter)
             {
                 ButtonConnected.interactable = true;
             }

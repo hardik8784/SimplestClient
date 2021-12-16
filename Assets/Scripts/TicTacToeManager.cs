@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class TicTacToeManager : MonoBehaviour
 {
@@ -23,8 +22,8 @@ public class TicTacToeManager : MonoBehaviour
 
     public string PlayerName;
     public Text textDisplay, IDDisplay;
-    InputField chatInputField;
-    Button sendButton, resetButtonTrigger, saveReplayButton;
+    InputField InputFieldChat;
+    Button SendButton, RestartButton;
 
     public delegate void SearchButton(int row, int column, int opponentID);
     public event SearchButton Search;
@@ -74,24 +73,20 @@ public class TicTacToeManager : MonoBehaviour
         InputField[] allInputFields = FindObjectsOfType<InputField>();
         foreach (InputField tempField in allInputFields)
         {
-            if (tempField.gameObject.name == "Chat Input Field")
-                chatInputField = tempField;
+            if (tempField.gameObject.name == "InputFieldChat")
+                InputFieldChat = tempField;
         }
 
         Button[] allButtons = FindObjectsOfType<Button>();
         foreach (Button tempButton in allButtons)
         {
-            if (tempButton.gameObject.name == "Send Message Button")
+            if (tempButton.gameObject.name == "SendButton")
             {
-                sendButton = tempButton;
+                SendButton = tempButton;
             }
-            else if (tempButton.gameObject.name == "Reset Game Button")
+            else if (tempButton.gameObject.name == "RestartButton")
             {
-                resetButtonTrigger = tempButton;
-            }
-            else if (tempButton.gameObject.name == "Save Replay Button")
-            {
-                saveReplayButton = tempButton;
+                RestartButton = tempButton;
             }
         }
 
@@ -151,6 +146,7 @@ public class TicTacToeManager : MonoBehaviour
         if (CheckWinCondition())
         {
             networkedClient.SendMessageToHost(ClientToServerSignifiers.PlayerWins + "," + playerID);
+            ActivateResetButton();
         }
       
         else
@@ -198,17 +194,24 @@ public class TicTacToeManager : MonoBehaviour
     {
        
         playerTurn++;
-     
+        if (playerTurn > 9) 
+        {
+             ActivateResetButton();
+        }
+    }
+    public void ActivateResetButton()
+    {
+        RestartButton.gameObject.SetActive(true);
     }
 
 
-    
+
     public void ResetGame()
     {
         ResetButtons();
 
         playerTurn = 1; 
-        resetButtonTrigger.gameObject.SetActive(false);
+        RestartButton.gameObject.SetActive(false);
     }
 
     public void ResetButtons()
@@ -246,7 +249,7 @@ public class TicTacToeManager : MonoBehaviour
    
     private void SendChatMessage()
     {
-        networkedClient.SendMessageToHost(ClientToServerSignifiers.SendPresetMessage + "," + chatInputField.text);
+        networkedClient.SendMessageToHost(ClientToServerSignifiers.SendPresetMessage + "," + InputFieldChat.text);
     }
 
     public void ReceiveMessage(string message)

@@ -29,7 +29,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
-    - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -82,8 +81,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 2458}
     - Class: 114
       Script: {instanceID: 2604}
-    - Class: 114
-      Script: {instanceID: 2644}
     - Class: 114
       Script: {instanceID: 2720}
     - Class: 114
@@ -591,7 +588,7 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
-      Hash: a284e589237fbb48f29443275ab02be2
+      Hash: 26c2450f4da906b46f68801d38c893e4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ButtonManager
@@ -670,4 +667,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: H:/SimplestClient-main/SimplestClient/Builds/v0.1/SimplestClient.exe
+  playerPath: H:/SimplestClient-main/SimplestClient/Buils/v0.1/SimplestClient.exe

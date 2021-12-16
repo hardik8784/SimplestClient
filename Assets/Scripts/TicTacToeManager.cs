@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TicTacToeManager : MonoBehaviour
 {
@@ -204,10 +205,22 @@ public class TicTacToeManager : MonoBehaviour
     
     public void ResetGame()
     {
-
+        ResetButtons();
 
         playerTurn = 1; 
         resetButtonTrigger.gameObject.SetActive(false);
+    }
+
+    public void ResetButtons()
+    {
+        for (int i = 0; i < ticTacToeboard.GetLength(0); i++)
+        {
+            for (int j = 0; j < ticTacToeboard.GetLength(1); j++)
+            {
+                ticTacToeboard[i, j] = 0;
+                Reset(i, j);
+            }
+        }
     }
 
     public void GameOverOnWin()

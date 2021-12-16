@@ -8,8 +8,9 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] private int XPos;
     [SerializeField] private int YPos;
 
+    [SerializeField]
     private Button ButtonConnected;
-
+    [SerializeField]
     TicTacToeManager ticTacToeManagerRef;
 
     void Start()
@@ -48,11 +49,11 @@ public class ButtonManager : MonoBehaviour
         if (row == XPos && column == YPos)
         {
             if (playerID == 1)
-            {
-                ButtonConnected.transform.GetChild(0).GetComponent<Text>().text = "O";
+            {              
+                ButtonConnected.transform.GetChild(0).GetComponent<Text>().text = "O";               
             }
             else if (playerID == 2)
-            {
+            {          
                 ButtonConnected.transform.GetChild(0).GetComponent<Text>().text = "X";
             }
             ButtonConnected.interactable = false;

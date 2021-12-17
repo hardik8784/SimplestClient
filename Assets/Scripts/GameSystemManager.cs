@@ -42,8 +42,7 @@ public class GameSystemManager : MonoBehaviour
             else if (go.name == "InfoText")
                 InfoText = go;
             else if (go.name == "InfoText2")
-                InfoText2 = go;
-          
+                InfoText2 = go;    
             else if (go.name == "Main_TicTacToeBoard")
                 MainTicTacToeBoard = go;
 

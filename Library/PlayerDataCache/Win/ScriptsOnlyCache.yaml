@@ -11,7 +11,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -66,41 +65,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1462}
     - Class: 114
-      Script: {instanceID: 1516}
+      Script: {instanceID: 1514}
     - Class: 114
-      Script: {instanceID: 1626}
+      Script: {instanceID: 1624}
     - Class: 114
-      Script: {instanceID: 1784}
+      Script: {instanceID: 1782}
     - Class: 114
-      Script: {instanceID: 1890}
+      Script: {instanceID: 1888}
     - Class: 114
-      Script: {instanceID: 2090}
+      Script: {instanceID: 2088}
     - Class: 114
-      Script: {instanceID: 2098}
+      Script: {instanceID: 2096}
     - Class: 114
-      Script: {instanceID: 2460}
+      Script: {instanceID: 2458}
     - Class: 114
-      Script: {instanceID: 2606}
+      Script: {instanceID: 2604}
     - Class: 114
-      Script: {instanceID: 2722}
+      Script: {instanceID: 2720}
     - Class: 114
-      Script: {instanceID: 2760}
+      Script: {instanceID: 2758}
     - Class: 114
-      Script: {instanceID: 2778}
+      Script: {instanceID: 2776}
     - Class: 114
-      Script: {instanceID: 2828}
+      Script: {instanceID: 2826}
     - Class: 114
-      Script: {instanceID: 2982}
+      Script: {instanceID: 2980}
     - Class: 114
-      Script: {instanceID: 3340}
+      Script: {instanceID: 3338}
     - Class: 114
-      Script: {instanceID: 4204}
+      Script: {instanceID: 4202}
     - Class: 114
-      Script: {instanceID: 4216}
+      Script: {instanceID: 4214}
     - Class: 114
-      Script: {instanceID: 4534}
+      Script: {instanceID: 4532}
     - Class: 114
-      Script: {instanceID: 4580}
+      Script: {instanceID: 4578}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -667,4 +666,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: H:/SimplestClient-main/SimplestClient/Buils/New folder (4)/SimplestClient.exe
+  playerPath: H:/SimplestClient-main/SimplestClient/Builds/New folder/SimplestClient.exe

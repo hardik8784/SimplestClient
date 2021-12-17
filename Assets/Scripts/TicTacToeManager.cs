@@ -92,7 +92,10 @@ public class TicTacToeManager : MonoBehaviour
 
         replayAnimationQueue = new Queue<TicTacToePlayAnimation>();
 
-        //});
+        RestartButton.onClick.RemoveAllListeners();
+        RestartButton.onClick.AddListener(RestartButtonPressed);
+
+        RestartButton.gameObject.SetActive(false);
     }
 
     void Start()
@@ -178,18 +181,20 @@ public class TicTacToeManager : MonoBehaviour
         || (ticTacToeboard[0, 0] == playerID && ticTacToeboard[1, 1] == playerID && ticTacToeboard[2, 2] == playerID)
         || (ticTacToeboard[2, 0] == playerID && ticTacToeboard[1, 1] == playerID && ticTacToeboard[0, 2] == playerID))
         {
-            //Debug.Log("Player " + playerID + " wins");
             textDisplay.text = PlayerName + " wins";
             return true;
         }
         return false;
     }
 
- 
 
-    /// <summary>
-    /// Checks for the draw
-    /// </summary>
+    private void RestartButtonPressed()
+    {
+        ResetGame();
+        networkedClient.SendMessageToHost(ClientToServerSignifiers.ResetGame + "");
+        Debug.Log("Reset finish");
+    }
+
     public void CheckDraw()
     {
        

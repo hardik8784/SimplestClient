@@ -172,6 +172,8 @@ public class NetworkedClient : MonoBehaviour
         else if (Signifier == ServerToClientSignifiers.NotifyOpponentWin)
         {
             Debug.Log("Your Compititor has won: " + csv[1]);
+            TicTacToeManager_.ActivateResetButton();
+            TicTacToeManager_.ReplyButtonActivated();
             TicTacToeManager_.GameOverOnWin();
         }
         else if (Signifier == ServerToClientSignifiers.GameReset)
@@ -207,6 +209,8 @@ public static class ClientToServerSignifiers
     public const int SendPresetMessage = 6;
     public const int PlayerWins = 7;
     public const int ResetGame = 8;
+    public const int SaveReplay = 9;
+    public const int RequestReplay = 10;
 }
 public static class ServerToClientSignifiers
 {
@@ -220,4 +224,6 @@ public static class ServerToClientSignifiers
     public const int NotifyOpponentWin = 8; 
     public const int ChangeTurn = 9;
     public const int GameReset = 10;
+
+    public const int UpdateReplayList = 11;
 }

@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
+    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -299,7 +300,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 76ddc8043fae064781778f7ec548c8e5
+      Hash: 8c3f70ebf6534bee84c0dec96f732247
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TicTacToeManager
@@ -666,4 +667,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: H:/SimplestClient-main/SimplestClient/Builds/New folder/SimplestClient.exe
+  playerPath: H:/SimplestClient-main/SimplestClient/Builds/v0.4/SimplestClient.exe

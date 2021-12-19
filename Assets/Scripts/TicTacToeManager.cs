@@ -23,7 +23,7 @@ public class TicTacToeManager : MonoBehaviour
     public string PlayerName;
     public Text textDisplay, IDDisplay;
     InputField InputFieldChat;
-    Button SendButton, RestartButton;
+    Button SendButton, RestartButton, ReplyButton;
 
     public delegate void SearchButton(int row, int column, int opponentID);
     public event SearchButton Search;
@@ -49,25 +49,12 @@ public class TicTacToeManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private bool isReplaying;
-    public bool IsReplaying
-    {
-        get => isReplaying;
-        set
-        {
-            isReplaying = value;
-        }
-    }
-
     public Queue<TicTacToePlayAnimation> replayAnimationQueue;
     float delayReplayAnimation;
 
-    /// <summary>
-    /// The moment this manager turns on, go through any and all possible items
-    /// </summary>
     private void OnEnable()
     {
-        // finds the client object for communication to the server
+       
         networkedClient = GameObject.FindObjectOfType<NetworkedClient>();
 
         InputField[] allInputFields = FindObjectsOfType<InputField>();
@@ -88,14 +75,21 @@ public class TicTacToeManager : MonoBehaviour
             {
                 RestartButton = tempButton;
             }
+            else if(tempButton.gameObject.name == "ReplyButton")
+            {
+                ReplyButton = tempButton;
+            }
         }
 
         replayAnimationQueue = new Queue<TicTacToePlayAnimation>();
 
         RestartButton.onClick.RemoveAllListeners();
         RestartButton.onClick.AddListener(RestartButtonPressed);
+        ReplyButton.onClick.RemoveAllListeners();
+        ReplyButton.onClick.AddListener(ReplyButtonPressed);
 
         RestartButton.gameObject.SetActive(false);
+        ReplyButton.gameObject.SetActive(false);
     }
 
     void Start()
@@ -155,6 +149,7 @@ public class TicTacToeManager : MonoBehaviour
         else
         {
             CheckDraw();
+            
         }
     }
 
@@ -195,6 +190,17 @@ public class TicTacToeManager : MonoBehaviour
         Debug.Log("Reset finish");
     }
 
+    private void ReplyButtonPressed()
+    {
+        networkedClient.SendMessageToHost(ClientToServerSignifiers.SaveReplay + "");
+        ReplyButton.gameObject.SetActive(false);
+    }
+
+    public void ReplyButtonActivated()
+    {
+        ReplyButton.gameObject.SetActive(true);
+    }
+
     public void CheckDraw()
     {
        
@@ -202,6 +208,7 @@ public class TicTacToeManager : MonoBehaviour
         if (playerTurn > 9) 
         {
              ActivateResetButton();
+             textDisplay.text = PlayerName + ", why don't you Play one more time!";
         }
     }
     public void ActivateResetButton()
